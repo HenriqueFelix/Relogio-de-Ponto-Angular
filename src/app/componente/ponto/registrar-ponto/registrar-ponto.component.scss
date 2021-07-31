@@ -1,0 +1,119 @@
+.cam-area {
+    position: relative;
+    width: 360px;
+    height: auto;
+    background: #fbfbfb;
+
+    .web-cam {
+        width: 360px !important;
+        height: 360px !important;
+        border-radius: 4px;
+    }
+
+    .cam-actions {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 999999;
+    }
+
+    .cam-buttons {
+        width: 360px;
+        flex-direction: row;
+        display: flex;
+        margin-bottom: 25px;
+    }
+
+    .btn-photo {
+        margin-right: 25px;
+    }
+
+    .btn-clear {
+        margin-left: 25px;
+    }
+
+    .navbar-spacer {
+        flex: 1 1 auto;
+    }
+
+    .cam-snapshot {
+        width: 360px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        img {
+            width: 360px;
+        }
+    }
+}
+
+.area-tipo-ponto {
+    padding: 15px;
+    width: 100%;
+    height: auto;
+}
+
+.btn-ponto.blue {
+    background: #e8f0fe !important;
+}
+
+.btn-ponto.yellow {
+    background: #ffefba !important;
+}
+
+.btn-ponto.purple {
+    background: #d5b5ff !important;
+}
+
+.btn-ponto.red {
+    background: #ffe2df !important;
+}
+
+.btn-ponto {
+    text-align: left;
+    display: grid;
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+
+    .btn-ponto-title {
+        color: #4c4c4c;
+        font-weight: 300;
+        font-size: 12px;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        letter-spacing: 2px;
+        cursor: pointer;
+    }
+
+    .btn-ponto-subtitle {
+        margin-top: -2px;
+        cursor: pointer;
+
+        label {
+            color: #000;
+            font-weight: 500;
+            font-size: 14px;
+            font-family: Roboto, "Helvetica Neue", sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: -7px;
+            cursor: pointer;
+        }
+
+        .mat-icon {
+            height: 20px !important;
+            width: 20px !important;
+            font-size: 20px !important;
+            margin-left: 7px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .cam-area {
+        width: calc(100% - 30px);
+    }
+}

@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Sucesso</h1>
+<div mat-dialog-content>
+    <p>{{data.label}}</p>
+</div>
+<!-- 
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.id" cdkFocusInitial>Ok</button>
+</div> 
+-->
+<div class="section-page">
+    <mat-toolbar color="transparent">
+        <button mat-button (click)="onNovoUsuario()" *ngIf="data.tipo != 1">Novo usuário</button>
+        <button mat-button (click)="onEditarUsuario()" *ngIf="data.tipo == 1">Editar usuário</button>
+        <span class="navbar-spacer"></span>
+        <button mat-button (click)="onListaUsuario()" cdkFocusInitial>Continuar</button>
+    </mat-toolbar>
+</div>

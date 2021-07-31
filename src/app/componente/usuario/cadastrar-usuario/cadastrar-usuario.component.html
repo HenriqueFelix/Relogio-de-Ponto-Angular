@@ -1,0 +1,132 @@
+<div class="padding-25">
+    <div class="section-page">
+        <mat-toolbar color="transparent">
+            <button mat-icon-button aria-label="Voltar" [routerLink]="['/usuarios']" class="section-icon-left">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <h3 class="font-weight-500 font-20">Usuário</h3>
+        </mat-toolbar>
+    </div>
+
+    <div class="custom-box top-15">
+        <div class="section-page">
+            <mat-toolbar color="transparent">
+                <h4 class="font-weight-500 font-16">{{tituloPagina}}</h4>
+                <span class="navbar-spacer"></span>
+                <h4 class="font-weight-500 font-16" *ngIf="idUsuarioEdicao > 0">id: {{idUsuarioEdicao}}</h4>
+            </mat-toolbar>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-xs-12">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="Nome" [(ngModel)]="usuario.nome" name="nome" id="nome" #nome
+                        autocomplete="false" [formControl]="nomeFormControl">
+
+                    <mat-error *ngIf="nomeFormControl.hasError('required')">
+                        Nome é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>CPF</mat-label>
+                    <input matInput placeholder="CPF" [(ngModel)]="usuario.cpf" name="cpf" id="cpf" #cpf
+                        autocomplete="false" [formControl]="cpfFormControl" mask="000.000.000-00"
+                        [dropSpecialCharacters]="false">
+
+                    <mat-error *ngIf="cpfFormControl.hasError('required')">
+                        CPF é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row top-10">
+            <div class="col-md-4 col-xs-12">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput placeholder="E-mail" [(ngModel)]="usuario.login" name="login" id="login" #login
+                        autocomplete="false" [disabled]="idUsuarioEdicao > 0" [formControl]="emailFormControl">
+
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Insira um endereço de e-mail válido
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Senha</mat-label>
+                    <input matInput placeholder="Senha" [(ngModel)]="usuario.senha" name="senha" id="senha" #senha
+                        type="password" autocomplete="false" [formControl]="senhaFormControl">
+
+                    <mat-error *ngIf="senhaFormControl.hasError('required')">
+                        Senha é <strong>obrigatória</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Confirmar senha</mat-label>
+                    <input matInput placeholder="Confirmar senha" [(ngModel)]="usuario.senha_confirm"
+                        name="senha_confirm" id="senha_confirm" #senha_confirm type="password" autocomplete="false">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row top-10">
+            <div class="col-md-11 col-xs-8">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Telefone</mat-label>
+                    <input matInput placeholder="Telefone" name="telefone" id="telefone" #telefone
+                        [(ngModel)]="contato.telefone" mask="(00) 00000-0000" [dropSpecialCharacters]="false">
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-1 col-xs-4">
+                <button mat-raised-button color="primary" class="button-padding top-8 full-width"
+                    (click)="adicionarContato()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <table class="custom-table full-width" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="left-cell">Telefone</th>
+                    <th class="right-cell"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contato of usuario.contatos; let i = index">
+                    <td class="left-cell">{{contato.telefone}}</td>
+                    <td class="right-cell">
+                        <button mat-icon-button color="warn" aria-label="Remover" (click)="dialogRemoverContato(contato, i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row top-10">
+            <div class="col-md-1 col-xs-12">
+                <button mat-raised-button color="primary" class="button-padding full-width" (click)="cadastrarUsuario()"
+                    *ngIf="idUsuarioEdicao == 0"
+                    [disabled]="nomeFormControl.invalid || cpfFormControl.invalid || emailFormControl.invalid || senhaFormControl.invalid">SALVAR</button>
+
+                <button mat-raised-button color="primary" class="button-padding full-width" (click)="editarUsuario()"
+                    *ngIf="idUsuarioEdicao > 0"
+                    [disabled]="nomeFormControl.invalid || cpfFormControl.invalid">EDITAR</button>
+            </div>
+        </div>
+    </div>
+</div>

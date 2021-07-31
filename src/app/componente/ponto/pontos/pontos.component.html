@@ -1,0 +1,45 @@
+<div class="padding-25">
+    <div class="section-page">
+        <mat-toolbar color="transparent">
+            <h3 class="font-weight-500 font-20">Pontos</h3>
+            <!-- 
+            <span class="navbar-spacer"></span>
+            <button mat-raised-button color="primary" class="button-padding" (click)="openRegistrarPonto()">NOVO PONTO</button> 
+            -->
+        </mat-toolbar>
+    </div>
+
+    <div class="custom-box top-30">
+        <h4 class="font-weight-500 font-16">Filtrar</h4>
+
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="Nome do usuário" [(ngModel)]="filtro.nome" name="nome" id="nome" #nome>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>CPF</mat-label>
+                    <input matInput placeholder="CPF" [(ngModel)]="filtro.cpf" name="cpf" id="cpf" #cpf
+                        mask="000.000.000-00" [dropSpecialCharacters]="false">
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Login</mat-label>
+                    <input matInput placeholder="Login de acesso" [(ngModel)]="filtro.login" name="login" id="login"
+                        #login>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-1">
+                <button mat-raised-button color="primary" class="button-padding top-8 full-width"
+                    (click)="consultarUsuario()">FILTRAR <mat-icon>search</mat-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

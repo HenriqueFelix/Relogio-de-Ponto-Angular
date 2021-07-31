@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Encerrar sessão.</h1>
+<div mat-dialog-content>
+    <p>Deseja sair do sistema?</p>
+</div>
+<!-- 
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Não</button>
+    <button mat-button (click)="onLogoutClick()" cdkFocusInitial>Sair</button>
+</div> 
+-->
+<div class="section-page">
+    <mat-toolbar color="transparent">
+        <button mat-button (click)="onNoClick()" cdkFocusInitial>Não</button>
+        <span class="navbar-spacer"></span>
+        <button mat-button (click)="onLogoutClick()">Sair</button>
+    </mat-toolbar>
+</div>

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Remover.</h1>
+<div mat-dialog-content>
+    <p>{{data.mensagem}}</p>
+</div>
+
+<div class="section-page">
+    <mat-toolbar color="transparent">
+        <button mat-button (click)="onNoClick()" cdkFocusInitial>Não</button>
+        <span class="navbar-spacer"></span>
+        <button mat-button (click)="onRemoverClick()" color="warn">Remover</button>
+    </mat-toolbar>
+</div>

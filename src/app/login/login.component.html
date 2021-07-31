@@ -1,0 +1,53 @@
+<!-- https://codepen.io/colorlib/details/rxddKy -->
+
+<div class="bg-page">
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form">
+                <input type="text" placeholder="Nome" />
+                <input type="password" placeholder="Senha" />
+                <input type="text" placeholder="E-mail" />
+                <button>create</button>
+                <p class="message">Already registered? <a href="#">Sign In</a></p>
+            </form>
+
+            <form class="login-form">
+                <h2 class="align-left font-theme-color font-weight-400">Relógio de Ponto</h2>
+
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>E-mail</mat-label>
+                    <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                        [(ngModel)]="usuario.login" name="login" id="login" #login placeholder="E-mail">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Insira um endereço de e-mail válido
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width top-10" appearance="fill">
+                    <mat-label>Senha</mat-label>
+                    <input matInput placeholder="Senha" [(ngModel)]="usuario.senha" name="senha" id="senha" #senha
+                        [formControl]="senhaFormControl" [type]="hidePassword ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="senhaFormControl.hasError('required')">
+                        Senha é <strong>obrigatória</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="top-5">
+                    <button mat-raised-button color="primary" (click)="loginAplicacao()" class="full-width"
+                        [disabled]="emailFormControl.invalid || senhaFormControl.invalid">Acessar</button>
+                </div>
+
+                <div class="top-5">
+                    <p class="message">Não possui uma conta? <a href="#">Cadastre-se agora.</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

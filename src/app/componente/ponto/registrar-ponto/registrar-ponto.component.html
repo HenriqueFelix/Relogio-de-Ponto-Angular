@@ -1,0 +1,134 @@
+<div class="padding-25">
+    <div class="section-page">
+        <mat-toolbar color="transparent">
+            <button mat-icon-button aria-label="Voltar" [routerLink]="['/pontos']" class="section-icon-left">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <h3 class="font-weight-500 font-20">Ponto</h3>
+        </mat-toolbar>
+    </div>
+
+    <div class="custom-box top-30">
+        <!-- <h4 class="font-weight-500 font-16">Registrar</h4> -->
+
+        <div class="row">
+            <div class="col-md-12 flex-div-row">
+                <div class="cam-area">
+                    <webcam class="web-cam" [height]="360" [width]="360" [trigger]="triggerObservable"
+                        (imageCapture)="handleImage($event)" (initError)="handleInitError($event)">
+                    </webcam>
+
+                    <div class="cam-actions">
+                        <div class="cam-buttons">
+                            <button mat-mini-fab color="warn" aria-label="Limpar" (click)="clearSnapshot();"
+                                class="btn-clear" *ngIf="webcamImage">
+                                <mat-icon>clear</mat-icon>
+                            </button>
+                            <span class="navbar-spacer"></span>
+                            <button mat-mini-fab color="primary" aria-label="Fotografar" (click)="triggerSnapshot();"
+                                class="btn-photo" *ngIf="!webcamImage">
+                                <mat-icon>photo_camera</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="cam-snapshot" *ngIf="webcamImage">
+                        <img [src]="webcamImage.imageAsDataUrl" />
+                    </div>
+                </div>
+
+                <div class="area-tipo-ponto">
+                    <div class="row" style="text-align: center;">
+                        <div class="col-md-12">
+                            <h3 style="font-size: 42px;">{{dataAtual}} {{horaAtual}}</h3>
+                        </div>
+                    </div>
+
+                    <div class="horizontal-center width-fit-content">
+                        <div class="row">
+                            <div class="col-md-4 col-xs-6">
+                                <button mat-raised-button class="btn-ponto blue" (click)="registrarPonto(0)">
+                                    <label class="btn-ponto-title">Entrada</label>
+                                    <div class="btn-ponto-subtitle">
+                                        <div class="flex-div-row">
+                                            <label>Registrar entrada</label>
+                                            <mat-icon>arrow_forward</mat-icon>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div class="col-md-4 col-xs-6">
+                                <button mat-raised-button class="btn-ponto yellow" (click)="registrarPonto(1)">
+                                    <label class="btn-ponto-title">Intervalo</label>
+                                    <div class="btn-ponto-subtitle">
+                                        <div class="flex-div-row">
+                                            <label>Registrar intervalo</label>
+                                            <mat-icon>arrow_forward</mat-icon>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div class="col-md-4 col-xs-6">
+                                <button mat-raised-button class="btn-ponto purple" (click)="registrarPonto(2)">
+                                    <label class="btn-ponto-title">Retorno do intervalo</label>
+                                    <div class="btn-ponto-subtitle">
+                                        <div class="flex-div-row">
+                                            <label>Registrar retorno</label>
+                                            <mat-icon>arrow_forward</mat-icon>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div class="col-md-4 col-xs-6">
+                                <button mat-raised-button class="btn-ponto red" (click)="registrarPonto(3)">
+                                    <label class="btn-ponto-title">Saída</label>
+                                    <div class="btn-ponto-subtitle">
+                                        <div class="flex-div-row">
+                                            <label>Registrar saída</label>
+                                            <mat-icon>arrow_forward</mat-icon>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        <div class="row">
+            <div class="col-md-4">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="Nome do usuário" [(ngModel)]="filtro.nome" name="nome" id="nome" #nome>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>CPF</mat-label>
+                    <input matInput placeholder="CPF" [(ngModel)]="filtro.cpf" name="cpf" id="cpf" #cpf
+                        mask="000.000.000-00" [dropSpecialCharacters]="false">
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Login</mat-label>
+                    <input matInput placeholder="Login de acesso" [(ngModel)]="filtro.login" name="login" id="login"
+                        #login>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-1">
+                <button mat-raised-button color="primary" class="button-padding top-8 full-width"
+                    (click)="consultarUsuario()">FILTRAR <mat-icon>search</mat-icon></button>
+            </div>
+        </div>
+        -->
+    </div>
+</div>
